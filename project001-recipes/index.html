@@ -1,17 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" src="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Odin Recipes</h1>
-    <ul>
-        <li><a href="recipes/pasta-aglio-e-olio.html">Pasta Aglio e Olio</a></li>
-        <li><a href="recipes/simple-bread.html">Simple Bread</a></li>
-        <li><a href="recipes/scrambled-egg.html">Scrambled Egg</a></li>
+<body class="column-flex">
+  <div class="header row-flex">
+    <h3>Recipes</h3>
+    <ul class="tab-list row-flex">
+      <li class="tab">Link to Recipes</li>
+      <li class="tab">My Recipes</li>
+      <li class="tab">About Me</li>
     </ul>
+  </div>
+  <div class="hero section row-flex">
+    <div class="hero-content column-flex">
+      <h1>Cooking isn't just a skill!</h1>
+      <p>Cooking might seem pointless in this day and age. But for me it has become a source of self 
+        recogniciton (I know I sound like some kind of dumb instagram fluencer.)
+        But for one, it is a time didicated to onself, with no distraction.
+        <br>Here you can find some links to tested recipes I liked. And check out the version of them I made.</p>
+      <button>Recipes</button>
+    </div>
+    <img src="recipes/pictures/pasta_aglio_e_olio.jpg" alt="Image of homemade pasta aglio e olio">
+  </div>
+  <div class="content section column-flex">
+    <h2 class="title">My Recipes</h2>
+    <div class="recipe-list row-flex">
+      <div class="recipe column-flex">
+        <img src="recipes/pictures/pasta_aglio_e_olio.jpg" alt="">
+        <p>A descripiton of the recipes.</p>
+      </div>
+      <div class="recipe column-flex">
+        <img src="recipes/pictures/pasta_aglio_e_olio.jpg" alt="">
+        <p>A descripiton of the recipes.</p>
+      </div>
+      <div class="recipe column-flex">
+        <img src="recipes/pictures/pasta_aglio_e_olio.jpg" alt="">
+        <p>A descripiton of the recipes.</p>
+      </div>
+      <div class="recipe column-flex">
+        <img src="recipes/pictures/pasta_aglio_e_olio.jpg" alt="">
+        <p>A descripiton of the recipes.</p>
+      </div>
+    </div>
+  </div>
+  <div class="quote section row-flex">
+    <p class="quote-text">some random long qutoe from some dumb ass person that belived everything in life is just easy, because he belived in some sort of god that was there to make everything good at some point.</p>
+  </div>
+  <div class="news-letter section row-flex">
+    <div class="row-flex">
+      <div class="notif row-flex">
+        <div>
+          <h3>Recive a new recipte</h3>
+          <p>Every now and then.</p>
+        </div>
+        <button>Sign Up</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer row-flex">
+    <p>Copyright @ The Taha Fallahi Company 2025</p>
+  </div>
 </body>
-</html> 
+</html>
+
