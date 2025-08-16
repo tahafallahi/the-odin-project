@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <dialog>
+        <button autofocus class="close-button">Close</button>
+        <form class="new-book-form" method="dialog">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+            <label for="year">Publishing year:</label>
+            <input type="text" id="year" name="year">
+            <label for="page">Pages:</label>
+            <input type="text" id="page" name="page">
+            <div>
+                <label for="read">Read:</label>
+                <input type="radio" id="read" name="read">
+            </div>
+            <button type="submit" class="submit">Create New Book.</button>
+        </form>
+    </dialog>
+    <div class="library"></div>
+    <button class="new-book">Add New Book.</button>
+</body>
+</html>
