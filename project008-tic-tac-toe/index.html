@@ -5,20 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js" defer></script>
+    <script src="javascriptV2.js" defer></script>
 </head>
 <body>
-    <h1 id="title">Play Tic Tac Toe!</h1>
+    <div id="header">
+        <div class="player">
+            <h2>Player 1:</h2>
+            <h2 class="player1-score">0</h2>
+        </div>
+        <h1 class="title">Play Tic Tac Toe!</h1>
+        <div class="player">
+            <h2>Player 2:</h2>
+            <h2 class="player2-score">0</h2>
+        </div>
+    </div>
     <div id="game-board">
-        <div id="00" class="cell"></div>
-        <div id="01" class="cell"></div>
-        <div id="02" class="cell"></div>
-        <div id="10" class="cell"></div>
-        <div id="11" class="cell"></div>
-        <div id="12" class="cell"></div>
-        <div id="20" class="cell"></div>
-        <div id="21" class="cell"></div>
-        <div id="22" class="cell"></div>
+        <div id="0-0" class="cell"></div>
+        <div id="0-1" class="cell"></div>
+        <div id="0-2" class="cell"></div>
+        <div id="1-0" class="cell"></div>
+        <div id="1-1" class="cell"></div>
+        <div id="1-2" class="cell"></div>
+        <div id="2-0" class="cell"></div>
+        <div id="2-1" class="cell"></div>
+        <div id="2-2" class="cell"></div>
     </div>
     <template class="restart-button">
         <button>New Round!</button>
