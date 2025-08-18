@@ -5,14 +5,14 @@ class UI {
     static #player2Score = document.querySelector(".player2-score");
 
     static display(message) {
-        UI.#title.innerHTML = message;
+        this.#title.innerHTML = message;
     }
 
     static increaseScore(player) {
         if (player == "player1") {
-            UI.#player1Score.innerHTML = parseInt(UI.#player1Score.innerHTML) + 1;
+            this.#player1Score.innerHTML = parseInt(this.#player1Score.innerHTML) + 1;
         } else if (player == "player2") {
-            UI.#player2Score.innerHTML = parseInt(UI.#player2Score.innerHTML) + 1;
+            this.#player2Score.innerHTML = parseInt(this.#player2Score.innerHTML) + 1;
         };
     };
 
@@ -23,6 +23,12 @@ class UI {
             element.classList.add("x");
         }
     }
+
+    static clearBoard() {
+        for (const element of this.gameBoard.children) {
+            element.classList = "cell";
+        }   
+    }
 }
 
 class GameBoard {
@@ -32,7 +38,7 @@ class GameBoard {
         [0, 0, 0]
     ];
     static clearBoard(){
-    GameBoard.#boardState = [
+    this.#boardState = [
         [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]
@@ -41,27 +47,27 @@ class GameBoard {
     
     static checkWin(){
     for (let x = 0; x < 3; x++){
-        if (GameBoard.#boardState[x][0] === GameBoard.#boardState[x][1] && GameBoard.#boardState[x][1] === GameBoard.#boardState[x][2]){
-            if (GameBoard.#boardState[x][0] !== 0) {return GameBoard.#boardState[x][0];};
+        if (this.#boardState[x][0] === this.#boardState[x][1] && this.#boardState[x][1] === this.#boardState[x][2]){
+            if (this.#boardState[x][0] !== 0) {return this.#boardState[x][0];};
         };
-        if (GameBoard.#boardState[0][x] === GameBoard.#boardState[1][x] && GameBoard.#boardState[1][x] === GameBoard.#boardState[2][x]) {
-            if (GameBoard.#boardState[0][x] !== 0) {return GameBoard.#boardState[0][x];};
+        if (this.#boardState[0][x] === this.#boardState[1][x] && this.#boardState[1][x] === this.#boardState[2][x]) {
+            if (this.#boardState[0][x] !== 0) {return this.#boardState[0][x];};
         };
         };
-        if (GameBoard.#boardState[0][0] === GameBoard.#boardState[1][1] && GameBoard.#boardState[1][1] === GameBoard.#boardState[2][2]){
-        if (GameBoard.#boardState[0][0] !== 0) {return GameBoard.#boardState[0][0];};
+        if (this.#boardState[0][0] === this.#boardState[1][1] && this.#boardState[1][1] === this.#boardState[2][2]){
+        if (this.#boardState[0][0] !== 0) {return this.#boardState[0][0];};
         }
-        if (GameBoard.#boardState[0][2] === GameBoard.#boardState[1][1] && GameBoard.#boardState[1][1] === GameBoard.#boardState[2][0]){
-            if (GameBoard.#boardState[0][2] !== 0) {return GameBoard.#boardState[0][2];};
+        if (this.#boardState[0][2] === this.#boardState[1][1] && this.#boardState[1][1] === this.#boardState[2][0]){
+            if (this.#boardState[0][2] !== 0) {return this.#boardState[0][2];};
         };
        return
     };
 
     static checkGameOver(){
-    const winner = GameBoard.checkWin();
-        if (!winner && GameBoard.#boardState.flat().includes(0)) {
+    const winner = this.checkWin();
+        if (!winner && this.#boardState.flat().includes(0)) {
             return 
-        } else if (!winner && !GameBoard.#boardState.flat().includes(0)) {
+        } else if (!winner && !this.#boardState.flat().includes(0)) {
             return "tie";
         } else if (winner == 1) {
             return "player1";            
@@ -71,76 +77,83 @@ class GameBoard {
     };
 
     static checkValidMove(cordinance) {
-        if (GameBoard.#boardState[cordinance[0]][cordinance[1]] == 0) {
+        if (this.#boardState[cordinance[0]][cordinance[1]] == 0) {
             return true
-        } else if (GameBoard.#boardState[cordinance[0]][cordinance[1]] !== 0){
+        } else if (this.#boardState[cordinance[0]][cordinance[1]] !== 0){
             return false
         }
     }
 
     static changeState(cordinance, playerTurn){
         if (playerTurn == 1) {
-        GameBoard.#boardState[cordinance[0]][cordinance[1]] = 1;
+        this.#boardState[cordinance[0]][cordinance[1]] = 1;
         
         } else if (playerTurn == 2) {
-        GameBoard.#boardState[cordinance[0]][cordinance[1]] = 2;
+        this.#boardState[cordinance[0]][cordinance[1]] = 2;
         };
     };
 }
 
 
 class Game {
-    static #player1Score = 0;
-    static #player2Score = 0;
-    static #restartBtn = document.querySelector(".restart-button").content.cloneNode(true).querySelector("button");
-    static #body = document.querySelector("body");
-    
-    static initGame(){
-        Game.#restartBtn.addEventListener("click", Game.initGame);
-        let playerTurn = 1;
-        let moveMsg = [
-            "Invalid Move!",
-            "Player one place your mark.",
-            "Player two place your mark.",
-        ]
-        let gameOverMsg = {
-            tie: "You Tied!",
-            player1: "Player 1 is the winner!",
-            player2: "Plyyer 2 is the winner!",
-        }
-        GameBoard.clearBoard();
-        for (const element of UI.gameBoard.children) {
-            element.classList = "cell";
-        }
-        UI.display(moveMsg[1]);
-        UI.gameBoard.addEventListener("click", function(element){
+    #playerTurn = 1;
+    #player1Score = 0;
+    #player2Score = 0;
+    #restartBtn = document.querySelector(".restart-button").content.cloneNode(true).querySelector("button");
+    #body = document.querySelector("body");
+    #clickListner = (element) => {
             let cordinance = element.target.id.split("-");
             cordinance = cordinance.map(e => parseInt(e));
             const validity = GameBoard.checkValidMove(cordinance);
             if (validity) {
-                GameBoard.changeState(cordinance, playerTurn);
-                UI.changeState(element.target, playerTurn);
+                GameBoard.changeState(cordinance, this.#playerTurn);
+                UI.changeState(element.target, this.#playerTurn);
                 const winner = GameBoard.checkGameOver()
                 if (!winner) {
-                    playerTurn = playerTurn == 1 ? 2 : 1;
-                    UI.display(moveMsg[playerTurn]);
+                    this.#playerTurn = this.#playerTurn == 1 ? 2 : 1;
+                    UI.display(this.#moveMsg[this.#playerTurn]);
                 } else {
-                    UI.display(gameOverMsg[winner])
-                    Game.#body.appendChild(Game.#restartBtn)
+                    UI.gameBoard.removeEventListener("click", this.#clickListner);
+                    UI.display(this.#gameOverMsg[winner])
+                    this.#body.appendChild(this.#restartBtn)
                     if (winner == "player1") {
-                        Game.#player1Score++;
+                        this.#player1Score++;
                         UI.increaseScore(winner);
                     } else if (winner == "player2") {
-                        Game.#player2Score++;
+                        this.#player2Score++;
                         UI.increaseScore(winner);
                     };
                 }
-            } else if (!validity) {
-                UI.display(moveMsg[0])
-            }
-        });
+                } else if (!validity) {
+                    UI.display(this.#moveMsg[0])
+                }
+        }
+    #moveMsg = [
+        "Invalid Move!",
+        "Player one place your mark.",
+        "Player two place your mark.",
+    ]
+    #gameOverMsg = {
+        tie: "You Tied!",
+        player1: "Player 1 is the winner!",
+        player2: "Player 2 is the winner!",
     }
-    
+
+    constructor(){
+        this.#restartBtn.addEventListener("click", () => this.startGame());
+        this.startGame();
+    }
+
+    startGame() {
+        this.#playerTurn = 1;
+        if (this.#restartBtn.parentElement) {
+            this.#restartBtn.parentElement.removeChild(this.#restartBtn);
+        }
+        GameBoard.clearBoard();
+        UI.clearBoard();
+        UI.display(this.#moveMsg[1]);
+        UI.gameBoard.addEventListener("click", this.#clickListner);
+        }   
 }
 
-Game.initGame();
+const game = new Game();
