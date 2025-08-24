@@ -1,4 +1,4 @@
-import "./home.css"
+import image from "./pictures/meal.jpeg"
 
 class Data {
     static texts = {
@@ -17,12 +17,17 @@ class Data {
 function createHomePage() {
     const content = document.querySelector("#content"); 
     const container = document.createElement("div");
+    const textContainer = document.createElement("div");
     const introduction = document.createElement("p");
     const hours = document.createElement("ul");
     const location = document.createElement("p");
     const concerns = document.createElement("p");
+    const img = document.createElement("img");
     
+    img.src = image;
+    img.id = "home-picture";
     container.id = "container";
+    textContainer.id = "text-container";
     
     for (let i = 0; i < 2; i++) {
         const li = document.createElement("li");
@@ -34,7 +39,8 @@ function createHomePage() {
     concerns.innerHTML = Data.texts.concerns;
     
 
-    container.append(...[introduction, hours, location, concerns]);
+    textContainer.append(...[introduction, hours, location, concerns]);
+    container.append(...[textContainer, img]);
     content.appendChild(container);
 };
 
