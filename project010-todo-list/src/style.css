@@ -1,0 +1,106 @@
+:root {
+    --color-background: #f1f0a1;
+    --color-accent: #9ba1f1;
+    --border: 2px solid black;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--color-background);
+    display: flex;
+}
+
+#todo-list {
+    flex: 1;
+}
+
+#todo-panel {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: var(--border);
+}
+
+#todo-header {
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+#todo-controles {
+    width: 100%;
+    display: flex;
+}
+
+#project-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-item {
+    flex: 1;
+    text-align: center;
+    background-color: var(--color-background);
+    border-bottom: var(--border);
+}
+
+#todo-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 250px;
+}
+
+.todo-item {
+    background-color: var(--color-background);
+    border: var(--border);
+    margin: 5px;
+}
+
+.todo-item-header {
+    display: flex;
+}
+
+.todo-item > p {
+    white-space: pre-wrap;
+}
+
+#create-project,
+#create-todo {
+    height: 50px;
+    background-color: var(--color-accent);   
+    border: none;
+    flex: 1; 
+    border-top: var(--border);
+    border-bottom: var(--border);
+}
+
+.pseudo-textbox {
+    position: absolute;
+    height: 50px;
+    padding-left: 15px;
+}
+
+::backdrop {
+  background-image: linear-gradient(
+    45deg,
+    magenta,
+    rebeccapurple,
+    dodgerblue,
+    green
+  );
+  opacity: 0.75;
+}
+
+dialog[open] {
+    align-self: center;
+    justify-self: center;
+}
+
+#todo-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
