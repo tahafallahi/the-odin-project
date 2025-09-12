@@ -1,34 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
-</head>
-<body>
+  </head>
+  <body>
     <dialog id="todo-dialog">
-        <button autofocus id="close-button">Close</button>
-        <form id="todo-form" method="dialog">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <label for="due-date">DueDate:</label>
-            <input type="date" id="due-date" name="dueDate">
-            <label for="note">Note:</label>
-            <textarea id="note" name="note"></textarea>
-            <button type="submit" class="submit">Create New Book.</button>
-        </form>
+      <button autofocus id="close-button">Close</button>
+      <form id="todo-form" method="dialog">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="due-date">DueDate:</label>
+        <input type="date" id="due-date" name="dueDate" />
+        <label for="note">Note:</label>
+        <textarea id="note" name="note"></textarea>
+        <button type="submit" class="submit">Create New Book.</button>
+      </form>
     </dialog>
-    <div id="todo-list">
-    </div>
+    <div id="todo-list"></div>
     <div id="todo-panel">
-        <div id="todo-header">
-            <h1 id="title">Your handy ToDo list</h1>
-        </div>
-        <div id="todo-controles">
-            <button id="create-project">New Project</button>
-            <button id="create-todo">New ToDo List</button>
-        </div>
-        <div id="project-list"></div>
+      <div id="todo-header">
+        <h1 id="title">Your handy ToDo list</h1>
+      </div>
+      <div id="todo-controles">
+        <button id="create-project">New Project</button>
+        <button id="create-todo">New ToDo List</button>
+      </div>
+      <div id="project-list"></div>
     </div>
-</body>
+  </body>
 </html>

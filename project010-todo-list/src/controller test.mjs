@@ -20,7 +20,7 @@ project1.addToDo(todo1b);
 project1.addToDo(todo1c);
 
 // Create 3 todos for project2
-const todo2a = new ToDo
+const todo2a = new ToDo();
 const todo2b = new ToDo("Email client", "2025-09-02", "Send invoice");
 const todo2c = new ToDo("Team meeting", "2025-09-03", "Prepare slides");
 
@@ -33,9 +33,8 @@ project2.addToDo(todo2c);
 console.log("Project 1:", project1.getData());
 console.log("Project 2:", project2.getData());
 
-
 // let projectArray = loadData("projectsArray")
-let projectArray = []
+let projectArray = [];
 
 projectArray.push(project1.getData());
 projectArray.push(project2.getData());
