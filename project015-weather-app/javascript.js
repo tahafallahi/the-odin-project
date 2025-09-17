@@ -1,1 +1,0 @@
-console.log("javascrip.js is loaded.")
