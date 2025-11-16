@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="javascript.js" defer></script>
+  </head>
+  <body>
+    <form class="sign-up" novalidate>
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required />
+      </div>
+      <div class="input-container">
+        <label for="postal-code">Postal Code</label>
+        <input type="number" id="postal-code" name="postalcode" placeholder="34254353" min="100" required />
+      </div>
+      <div class="input-container">
+        <label for="country">Pick your country</label>
+        <select id="country" name="country" required>
+          <option value="" disabled selected hiddin>Select your country</option>
+          <option>America</option>
+          <option>France</option>
+          <option>Spain</option>
+          <option>England</option>
+          <option>Japan</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          minlength="8"
+          placeholder="your password"
+        />
+      </div>
+      <div class="input-container">
+        <label for="password-confirm">Confirm Password</label>
+        <input
+          type="password"
+          id="password-confirm"
+          name="passwordConfirm"
+          required
+          minlength="8"
+          placeholder="repeat your password"
+        />
+      </div>
+      <button class="sign-up-btn" type="submit">Sign Up.</button>
+    </form>
+  </body>
+</html>

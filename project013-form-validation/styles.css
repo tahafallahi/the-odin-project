@@ -1,0 +1,70 @@
+:root {
+  --bg: #f1f1f1;
+  --form-bg: #ffffff;
+  --accent: #6764fa;
+}
+
+body {
+  background-color: var(--bg);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-up {
+  padding: 80px 100px;
+  background-color: var(--form-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 15px 15px rgba(15, 23, 42, 0.08);
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container > label {
+  position: absolute;
+  bottom: 33px;
+}
+
+.sign-up button {
+  height: 40px;
+  color: white;
+  font-size: large;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 5px;
+}
+
+input {
+  font-size: 15px;
+  border: 1px solid rgb(102, 102, 102);
+  padding: 5px 10px;
+}
+
+input:placeholder-shown {
+  outline: none;
+}
+
+input:focus:invalid {
+  outline-color: rgb(255, 57, 57);
+}
+
+input:valid {
+  outline: auto;
+  outline-color: rgb(1, 243, 1);
+}
+
+select {
+    height: 29px;
+    width: 100%;
+}
+
+select:valid {
+  outline: auto;
+  outline-color: rgb(1, 243, 1);
+}
