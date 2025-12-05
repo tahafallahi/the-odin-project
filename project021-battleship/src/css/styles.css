@@ -1,0 +1,251 @@
+:root {
+  --color-bg: #fcf8f9;
+  --color-accent: rgb(86, 247, 233);
+  --color-primary: rgb(20, 20, 20);
+  --color-secondry: rgb(238, 238, 238);
+  --border-default: 3px solid black;
+  --border-selected: 5px solid var(--color-accent);
+  --border-thin: 2px solid rgb(15, 15, 15);
+  --font-size-large: 33px;
+}
+
+
+html {
+  background-color: var(--color-bg);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  max-width: none;
+  overflow: visible;
+  z-index: 10;
+  position: relative;
+}
+
+input {
+  border-radius: 0px;
+  border: 2px solid grey;
+  padding-left: 10px;
+}
+
+input[type="text"]{
+  width: 350px;
+}
+
+fieldset {
+  width: 350px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--color-primary);
+  border-radius: 0px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+#header {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0px;
+  border-bottom: var(--border-default);
+}
+
+#header h1 {
+  font-size: 70px;
+}
+
+#side-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#left-side,
+#right-side {
+  height: 100%;
+  flex: 1;
+}
+
+#content {
+  height: 100%;
+  flex: 7;
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  border-left: var(--border-default);
+  border-right: var(--border-default);
+}
+
+.unclickable {
+  pointer-events: none;
+}
+
+.game-board {
+  background-color: var(--color-primary);
+  display: grid;
+  grid-auto-rows: 50px;
+  grid-template-columns: repeat(10, 50px);
+  border: var(--border-thin);
+  gap: 1px;
+  user-select: none;
+}
+
+.selected-game-board {
+  
+  outline: var(--border-selected);
+}
+
+.game-board > div {
+  background-color: var(--color-secondry);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.game-board > .blocked-cell {
+  background-color: pink;
+}
+
+.game-board > .error-cell {
+  background-color: rgb(253, 27, 27);
+}
+
+.game-board > .targeted-cell {
+  background-color: pink;
+}
+
+.game-board > .hit-cell {
+  background-color: red;
+}
+
+.ship-card {
+  width: 300px;
+  height: 335px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 25px;
+  border: var(--border-thin);
+  user-select: none;
+}
+
+.ship-container {
+  display: flex;
+}
+
+.ship2 {
+  width: 100px;
+  height: 50px;
+}
+
+.ship3 {
+  width: 150px;
+  height: 50px;
+
+}
+
+.ship4 {
+  width: 200px;
+  height: 50px;
+
+}
+
+.ship5 {
+  width: 245px;
+  height: 50px;
+
+}
+
+.sunk-ship {
+  background-color: red;
+}
+
+.placement-board-finish-button {
+  margin-top: 20px;
+  height: 70px !important;
+  align-self: center;
+}
+
+.placement-board-reset-button {
+  width: 200px;
+  align-self:flex-end;
+}
+
+.title {
+  margin: 10px 0px 30px 0px;
+}
+
+.radio-box-div {
+  display: flex;
+  gap: 3px;
+}
+
+.container {
+  padding: 30px 80px;
+  background-color: var(--color-secondry);
+  border: var(--border-thin);
+}
+
+.flex-row-container {
+  display: flex;
+  justify-content: space-evenly;  
+  gap: 70px;
+}
+
+.flex-col-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.skew-btn {
+  color: var(--color-primary);
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  background: linear-gradient(to right, var(--color-primary) 0 50%, var(--color-secondry) 50% 100%);
+  background-repeat: no-repeat;
+  background-size: 201% 100%;
+  transition: color 1.2s, background-position 0.55s ease-out;
+  background-position: -352px;
+  height: 100px;
+  width: 350px;
+  transform: skew(-25deg);
+  border: none;
+}
+
+
+.skew-btn:hover {
+  color: var(--color-secondry);
+  background-position: 0px;
+}
+
+.skew-btn-text {
+  display: inline-block;
+  transform: skewX(25deg);
+}
+
+.start-game-button {
+  margin-top: 5px;
+  border: var(--border-thin);
+  height: 60px;
+}
