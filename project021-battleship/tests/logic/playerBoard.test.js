@@ -10,8 +10,8 @@ beforeEach(() => {
   for (let i = 0; i < 10; i++) {
     shipCords.push(Array(10).fill(0));
   }
-  shipList.push(new Ship(2));
-  shipList.push(new Ship(2));
+  shipList.push(new Ship({shipSunkCondition: "everySquare"}, 2));
+  shipList.push(new Ship({shipSunkCondition: "everySquare"},2));
 
   shipCords[0][0] = shipList[0];
   shipCords[0][1] = shipList[0];

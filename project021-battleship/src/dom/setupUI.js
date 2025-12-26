@@ -59,14 +59,13 @@ export default class setUpUI {
     let title = createH1("Select Game Settings");
     let p0Name = createTextInput("Player 1 Name", "p0Name", "Jesica");
     let p1Name = createTextInput("Player 2 Name", "p1Name", "Madan");
-    let playerNameDiv = createFlexRowDiv(p0Name, p1Name);
+    let playerNameDiv = createFlexRowDiv(p0Name, this.gameState.numberOfPlayers == 2 ? p1Name: "");
     let hitPerTurnRuleRadioBox = createRadioBox(
       "Select Game Variation",
       "hitPerTurn",
       {
         1: "<b>Vanila battleship:</b> 1 missle per turn.",
         3: "<b>Salvo:</b>  3 missle per turn",
-        shipCount: "<b>Pro:</b> each ship fires a missle per turn.",
       }
     );
     let shipSunkRuleRadioBox = createRadioBox(
@@ -89,7 +88,15 @@ export default class setUpUI {
     );
     let form = createForm(
       (data) => {
-        if (this.gameState.numberOfPlayers == 1) this.gameState.p1Name = "AI";
+        if (!data.p0Name) {
+          data.p0Name = "Player one";
+        }
+        if (this.gameState.numberOfPlayers == 1) {
+          data.p1Name = "AI";
+        } else if (!data.p1Name) {
+          data.p1Name = "Player two";
+        }
+
         this.gameState = Object.assign(this.gameState, data);
         this.initShipPlacementScreen();
       },

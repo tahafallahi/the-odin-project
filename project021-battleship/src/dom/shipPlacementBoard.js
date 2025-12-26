@@ -4,6 +4,7 @@ import {
   createDiv,
   createFlexColDiv,
   createFlexRowDiv,
+  createH1,
 } from "./components";
 
 export function createShipPlacementBoard(
@@ -31,6 +32,9 @@ export function createShipPlacementBoard(
     "placement-board-finish-button"
   );
   return createFlexColDiv(
+    createH1(
+      `${gameState[`${player}Name`]}'s turn. Place your ships on the board.`
+    ),
     resetButton,
     createFlexRowDiv(shipCard, grid),
     finishButton
@@ -47,44 +51,109 @@ function resetBoard(engine, gameState, initGameCallBack, player) {
 }
 
 function handleFinishButton(engine, gameState, initGameCallBack, player) {
-  let shipCords = [];
-  const children = Array.from(document.querySelector(".game-board").children);
-  let childrenMatrix = [];
+  let gameBoard = document.querySelector(".game-board");
+  if (
+    gameBoard.querySelectorAll("img").length <
+    gameState.shipsState.reduce((prev, ship) => prev + ship[0], 0)
+  ) {
+    document.querySelector(".title").textContent =
+      "Please place every ship on the board.";
+  } else {
+    let shipCords = [];
+    const children = Array.from(gameBoard.children);
+    let childrenMatrix = [];
 
-  for (let i = 0; i < 100; i += 10) {
-    let row = [];
-    for (let j = 0; j < 10; j++) {
-      row.push(children[i + j]);
+    for (let i = 0; i < 100; i += 10) {
+      let row = [];
+      for (let j = 0; j < 10; j++) {
+        row.push(children[i + j]);
+      }
+      childrenMatrix.push(row);
     }
-    childrenMatrix.push(row);
-  }
 
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
-      const cell = childrenMatrix[i][j];
-      if (cell.firstChild) {
-        const shipImg = cell.firstChild.firstChild;
-        let shipArray = [];
-        if (shipImg.dataset.angle == "0") {
-          for (let p = 0; p < Number(shipImg.dataset.size); p++) {
-            shipArray.push([i, j + p]);
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        const cell = childrenMatrix[i][j];
+        if (cell.firstChild) {
+          const shipImg = cell.firstChild.firstChild;
+          let shipArray = [];
+          if (shipImg.dataset.angle == "0") {
+            for (let p = 0; p < Number(shipImg.dataset.size); p++) {
+              shipArray.push([i, j + p]);
+            }
+          } else {
+            for (let p = 0; p < Number(shipImg.dataset.size); p++) {
+              shipArray.push([i - p, j]);
+            }
           }
-        } else {
-          for (let p = 0; p < Number(shipImg.dataset.size); p++) {
-            shipArray.push([i - p, j]);
-          }
+          shipCords.push(shipArray);
         }
-        shipCords.push(shipArray);
       }
     }
-  }
 
-  engine.setupGameBoard(shipCords, player);
+    engine.setupGameBoard(shipCords, player);
 
-  if (gameState.numberOfPlayers == 2 && player != "p1") {
-    resetBoard(engine, gameState, initGameCallBack, "p1");
-  } else {
-    initGameCallBack();
+    if (gameState.numberOfPlayers == 2 && player != "p1") {
+      resetBoard(engine, gameState, initGameCallBack, "p1");
+    } else if (gameState.numberOfPlayers == 1) {
+      let aiShipCords = [
+        [
+          [0, 4],
+          [0, 5],
+        ],
+        [
+          [1, 1],
+          [1, 2],
+        ],
+        [
+          [1, 7],
+          [1, 8],
+        ],
+        [
+          [4, 0],
+          [4, 1],
+          [4, 2],
+        ],
+        [
+          [4, 4],
+          [3, 4],
+          [2, 4],
+        ],
+        [
+          [4, 8],
+          [4, 9],
+        ],
+        [
+          [6, 6],
+          [5, 6],
+          [4, 6],
+          [3, 6],
+        ],
+        [
+          [7, 0],
+          [7, 1],
+          [7, 2],
+          [7, 3],
+        ],
+        [
+          [8, 5],
+          [8, 6],
+          [8, 7],
+          [8, 8],
+          [8, 9],
+        ],
+        [
+          [9, 2],
+          [9, 3],
+          [9, 4],
+        ],
+      ];
+
+      engine.setupGameBoard(aiShipCords, "p1");
+      initGameCallBack();
+    } else {
+      initGameCallBack();
+    }
   }
 }
 
@@ -108,13 +177,16 @@ function createShipCard(shipsState) {
     img.dataset.t = 0;
 
     img.addEventListener("dragstart", (event) => {
+      let oldIDHolder = document.getElementById("drag-source-from-card");
+      if (oldIDHolder) oldIDHolder.id = "";
+      img.dataset.placed = false;
       event.currentTarget.parentElement.id = "drag-source-from-card";
     });
 
     img.addEventListener("dragend", (event) => {
       let shipsRemainingNumber = Number(img.dataset.remainingNumber);
       shipsRemainingNumber--;
-      if (event.dataTransfer.dropEffect != "none") {
+      if (img.dataset.placed == "true") {
         if (shipsRemainingNumber < 1) {
           img.parentElement.removeChild(img.nextSibling);
           img.parentElement.removeChild(img);
@@ -122,6 +194,7 @@ function createShipCard(shipsState) {
           img.dataset.remainingNumber = shipsRemainingNumber;
           img.nextSibling.textContent = img.dataset.remainingNumber;
         }
+        delete img.dataset.placed;
       }
     });
 
@@ -167,6 +240,8 @@ function handleDrop(event) {
   if (!placementError) {
     if (dragSource) dragSource.removeAttribute("id");
     event.currentTarget.appendChild(wrapper);
+    const img = document.querySelector("[data-placed]");
+    img.dataset.placed = true;
   } else if (dragSource) {
     dragSource.appendChild(wrapper);
   } else if (dragSourceFromCard) {
@@ -174,6 +249,7 @@ function handleDrop(event) {
       dragSourceFromCard.firstChild.dataset.remainingNumber =
         Number(dragSourceFromCard.firstChild.dataset.remainingNumber) + 1;
     dragSourceFromCard.id = "";
+  } else {
   }
 }
 
@@ -256,7 +332,7 @@ function handleShipRotate(event) {
       true
     );
     img.dataset.angle = img.dataset.angle == 0 ? -90 : 0;
-    img.dataset.t = img.dataset.angle == 0 ? 0 : 50;
+    img.dataset.t = img.dataset.angle == 0 ? 0 : 30;
     img.style.setProperty("transform-origin", "bottom left");
     img.style.setProperty(
       "transform",

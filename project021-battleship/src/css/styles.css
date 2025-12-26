@@ -1,12 +1,15 @@
 :root {
   --color-bg: #fcf8f9;
   --color-accent: rgb(86, 247, 233);
+  --color-accent-transparent: rgba(0, 0, 0, 0.808);
   --color-primary: rgb(20, 20, 20);
   --color-secondry: rgb(238, 238, 238);
   --border-default: 3px solid black;
   --border-selected: 5px solid var(--color-accent);
   --border-thin: 2px solid rgb(15, 15, 15);
-  --font-size-large: 33px;
+  --font-size-header: 2.5rem;
+  --font-size-h1: 1.5rem;
+  --cell-size: 30px;
 }
 
 
@@ -22,6 +25,7 @@ body {
 }
 
 h1 {
+  font-size: var(--font-size-h1);
   text-align: center;
 }
 
@@ -56,18 +60,18 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 10px;
 }
 
 #header {
   width: 100%;
   text-align: center;
-  padding: 25px 0px;
+  padding: 15px 0px;
   border-bottom: var(--border-default);
 }
 
 #header h1 {
-  font-size: 70px;
+  font-size: var(--font-size-header);
 }
 
 #side-content {
@@ -86,10 +90,10 @@ form {
 #content {
   height: 100%;
   flex: 7;
-  padding: 50px 0px;
   display: flex;
+  padding-top: 10px;
   flex-direction: column;
-  gap: 50px;
+  gap: 30px;
   align-items: center;
   border-left: var(--border-default);
   border-right: var(--border-default);
@@ -102,15 +106,15 @@ form {
 .game-board {
   background-color: var(--color-primary);
   display: grid;
-  grid-auto-rows: 50px;
-  grid-template-columns: repeat(10, 50px);
+  grid-auto-rows: var(--cell-size);
+  grid-template-columns: repeat(10, var(--cell-size));
   border: var(--border-thin);
   gap: 1px;
   user-select: none;
+  align-self: center;
 }
 
 .selected-game-board {
-  
   outline: var(--border-selected);
 }
 
@@ -133,16 +137,43 @@ form {
   background-color: pink;
 }
 
-.game-board > .hit-cell {
+.game-board > .wreckage-cell {
   background-color: red;
 }
 
-.ship-card {
-  width: 300px;
-  height: 335px;
+.game-board > .empty-cell {
+  background-color: grey;
+}
+
+.p0-score-car,
+.p1-score-car {
   padding: 20px;
+}
+
+.banner {
+  font-size: 48px;
+  color: var(--color-secondry);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-transparent);
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+
+.ship-card {
+  width: calc(7 * var(--cell-size));
+  height: calc(10 * var(--cell-size));
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-self: center;
   gap: 25px;
   border: var(--border-thin);
@@ -154,25 +185,26 @@ form {
 }
 
 .ship2 {
-  width: 100px;
-  height: 50px;
+  width: calc(2 * var(--cell-size));
+  height: var(--cell-size);
 }
 
 .ship3 {
-  width: 150px;
-  height: 50px;
+  width: calc(3 * var(--cell-size));
+  height: var(--cell-size);
+
 
 }
 
 .ship4 {
-  width: 200px;
-  height: 50px;
+  height: var(--cell-size);
+  width: calc(4 * var(--cell-size));
 
 }
 
 .ship5 {
-  width: 245px;
-  height: 50px;
+  height: var(--cell-size);
+  width: calc(4.9 * var(--cell-size));
 
 }
 
@@ -201,15 +233,17 @@ form {
 }
 
 .container {
-  padding: 30px 80px;
+  padding: 10px 40px;
   background-color: var(--color-secondry);
   border: var(--border-thin);
 }
 
 .flex-row-container {
+  padding: 0px 0px;
   display: flex;
   justify-content: space-evenly;  
   gap: 70px;
+  flex-wrap: wrap;
 }
 
 .flex-col-container {
@@ -220,15 +254,15 @@ form {
 
 .skew-btn {
   color: var(--color-primary);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-h1);
   font-weight: bold;
   background: linear-gradient(to right, var(--color-primary) 0 50%, var(--color-secondry) 50% 100%);
   background-repeat: no-repeat;
   background-size: 201% 100%;
   transition: color 1.2s, background-position 0.55s ease-out;
-  background-position: -352px;
+  background-position: -302px;
   height: 100px;
-  width: 350px;
+  width: 300px;
   transform: skew(-25deg);
   border: none;
 }

@@ -15,7 +15,7 @@ export default class Engine {
     }
 
     ships.forEach((shipPlacmenet) => {
-      const ship = new Ship(shipPlacmenet.length);
+      const ship = new Ship(this.gameState, shipPlacmenet.length);
       shipsList.push(ship);
       shipPlacmenet.forEach(([i, j]) => shipCords[i][j] = ship);
     })
