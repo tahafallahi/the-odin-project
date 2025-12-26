@@ -5,7 +5,7 @@ import {
   createFlexColDiv,
   createFlexRowDiv,
   createH1,
-} from "./components";
+} from "./components.js";
 
 export function createShipPlacementBoard(
   engine,
