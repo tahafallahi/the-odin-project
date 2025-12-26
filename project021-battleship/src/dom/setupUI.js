@@ -13,7 +13,7 @@ import {
   createH3,
 } from "./components.js";
 
-import { createShipPlacementBoard } from "./shipPlacementBoard";
+import { createShipPlacementBoard } from "./shipPlacementBoard.js";
 import { createGameBoards, createPlayerCard } from "./gameBoards.js";
 
 export default class setUpUI {
