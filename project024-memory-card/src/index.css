@@ -1,0 +1,70 @@
+:root {
+  background-color: #042600;
+
+  --color-primary: #cab340;
+}
+
+* {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgb(234, 234, 234);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header > p {
+  padding: 40px 40px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.line {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: right;
+  top: 40px;
+}
+
+.line svg {
+  position: absolute;
+  width: 100%;
+  display: block;
+  top: 52.9%;
+}
+
+.line img {
+  width: 20%;
+  margin-right: 10%;
+}
+
+.stats {
+  padding: 30px 50px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.stats .score {
+  font-size: 2.5rem;
+}
+
+.stats .record {
+  font-size: 1.1rem;
+  color: #8a8686;
+}
+
+.stats > p {
+  font-size: 1.7rem;
+  color: #8a8686;
+}
+
+footer svg {
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
+  color: #6e611e;
+  font-size: 1.5rem;
+}
