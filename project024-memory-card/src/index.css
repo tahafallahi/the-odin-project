@@ -12,7 +12,7 @@
 }
 
 header > p {
-  padding: 40px 40px;
+  padding: 40px 300px 40px 300px;
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--color-primary);
@@ -21,25 +21,24 @@ header > p {
 .line {
   width: 100%;
   display: flex;
-  position: absolute;
   justify-content: right;
-  top: 40px;
+  top: 10vh;
 }
 
 .line svg {
-  position: absolute;
   width: 100%;
   display: block;
-  top: 52.9%;
 }
 
 .line img {
-  width: 20%;
-  margin-right: 10%;
+  position: absolute;
+  width: 15%;
+  margin-right: 15%;
+  transform: translateY(-52.5%);
 }
 
 .stats {
-  padding: 30px 50px;
+  padding: 30px 300px;
   display: flex;
   align-items: center;
   gap: 50px;
@@ -57,6 +56,45 @@ header > p {
 .stats > p {
   font-size: 1.7rem;
   color: #8a8686;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.anouncement {
+  font-size: 5rem;
+}
+
+.tiles {
+  padding-top: 40px ;
+  width: 100%;
+  max-width: 1350px;
+  align-self: center;
+  display: grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 1rem
+}
+
+.tile {
+  display: flex;
+  border: 5px solid green;
+  border-radius: 30px;
+  height: 200px;
+  width: 200px;
+  align-items: center;
+  justify-items: center;
+}
+
+.tile img {
+  width: 100%;
+}
+
+footer {
+  padding-top: 100px;
 }
 
 footer svg {
