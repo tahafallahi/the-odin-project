@@ -1,0 +1,16 @@
+.title {
+  font-size: 3rem;
+  padding: 20px 0px;
+  color: var(--color-secondry);
+  text-align: center;
+}
+
+.products-grid {
+  display: grid;
+}
+
+.error {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+}

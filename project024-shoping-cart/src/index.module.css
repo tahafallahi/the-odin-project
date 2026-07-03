@@ -1,0 +1,28 @@
+:root {
+  --color-primary: oklch(84.681% 0.05559 69.604);
+  --color-light-primary: oklch(92% 0.05559 69.604);
+  --color-text: oklch(16.842% 0.00002 271.152);
+  --color-secondry: oklch(37.706% 0.0827 59.192);
+
+  color: var(--color-text);
+}
+
+body {
+  background-color: var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-light-primary);
+  text-decoration: underline;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-size: 3.5rem;
+  font-weight: 100;
+}

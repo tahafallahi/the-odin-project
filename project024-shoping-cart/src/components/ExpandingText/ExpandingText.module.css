@@ -1,0 +1,22 @@
+@keyframes text-expantion {
+  from {
+    letter-spacing: -1ch;
+    color: transparent;
+  }
+
+  to {
+    letter-spacing: 0ch;
+    color: var(--color-expanding-text);
+  }
+}
+
+.expanding-text {
+  color: var(--color-expanding-text);
+  letter-spacing: -1ch;
+  color: transparent;
+  animation: text-expantion 1s 0.1s forwards;
+}
+
+.expanding-text::first-letter {
+  color: var(--color-expanding-text);
+}
