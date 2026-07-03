@@ -18,7 +18,6 @@ export default function CartPage() {
   const [cart, setCart] = useContext(CartContext);
 
   const sortedCart = cart.sort((a, b) => a.id - b.id);
-  console.log(sortedCart);
 
   useEffect(() => {
     async function getProducts() {

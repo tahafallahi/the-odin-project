@@ -2,5 +2,5 @@
 
 - ~~Add all the functionalities we want~~
 - ~~Refactor the codes~~
-- Write unit Testing
+- ~~Write unit Testing~~
 - Polish the ui

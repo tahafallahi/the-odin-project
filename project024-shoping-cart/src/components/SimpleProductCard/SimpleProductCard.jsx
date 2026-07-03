@@ -10,15 +10,13 @@ export default function SimpleProductCard({ product }) {
   const [count, setCount] = useState(pToRemove.count);
 
   function handleNumberChange(e) {
-    const newCount = Number(e.target.value);
-    setCount(newCount);
-    if (newCount > 0) {
+    if (e.target.value) {
+      const newCount = Number(e.target.value);
+      setCount(newCount);
       setCart([
         ...cart.filter((p) => p.id != pToRemove.id),
         { id: pToRemove.id, count: newCount },
       ]);
-    } else {
-      setCart(cart.filter((p) => p.id != pToRemove.id));
     }
   }
 
@@ -34,6 +32,7 @@ export default function SimpleProductCard({ product }) {
         <input
           type="number"
           value={count}
+          onFocus={(e) => e.target.select()}
           onChange={handleNumberChange}
           min="0"
           max="100"
