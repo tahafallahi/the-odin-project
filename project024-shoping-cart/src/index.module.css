@@ -1,23 +1,27 @@
 :root {
+  --color-background: oklch(95.01% 0 89.88);
+  --color-text: oklch(12.01% 0.045 284.57);
   --color-primary: oklch(84.681% 0.05559 69.604);
   --color-light-primary: oklch(92% 0.05559 69.604);
-  --color-text: oklch(16.842% 0.00002 271.152);
-  --color-secondry: oklch(37.706% 0.0827 59.192);
+  --color-secondry: oklch(40.706% 0.0827 57.192);
+  --color-accent: oklch(64.97% 0.158 22.5);
+
+  --shadow-header: 0px 0px 10px grey;
 
   color: var(--color-text);
 }
 
 body {
-  background-color: var(--color-primary);
+  background-color: var(--color-background);
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-secondry);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--color-light-primary);
+  color: var(--color-secondry);
   text-decoration: underline;
 }
 

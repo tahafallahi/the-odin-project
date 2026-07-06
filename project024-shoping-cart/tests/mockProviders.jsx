@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CartContext } from "../src/contexts";
+import { Outlet } from "react-router";
 
-export function MockCartContextProvider({ children }) {
+export function MockCartContextProvider() {
   const [cart, setCart] = useState([
     {
       id: 2,
@@ -14,8 +15,18 @@ export function MockCartContextProvider({ children }) {
   ]);
 
   return (
-    <CartContext.Provider value={[cart, setCart]}>
-      {children}
-    </CartContext.Provider>
+    <CartContext value={[cart, setCart]}>
+      <Outlet />
+    </CartContext>
+  );
+}
+
+export function EmptyMockCartContextProvider() {
+  const [cart, setCart] = useState([]);
+
+  return (
+    <CartContext value={[cart, setCart]}>
+      <Outlet />
+    </CartContext>
   );
 }

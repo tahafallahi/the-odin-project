@@ -1,9 +1,9 @@
 import { it, describe, expect } from "vitest";
 import { createRoutesStub } from "react-router";
 
-import { CartContextProvidor } from "../../providers.jsx";
-import ProductsPage from "./ProductsPage.jsx";
-import { getAllByRole, render, screen } from "@testing-library/react";
+import { EmptyMockCartContextProvider } from "../../../tests/mockProviders.jsx";
+import ProductsPage from "./ProductsPage";
+import { render, screen } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
 import { server } from "../../../tests/setup.js";
 import userEvent from "@testing-library/user-event";
@@ -11,11 +11,16 @@ import AppLayout from "../AppLayout/AppLayout.jsx";
 
 const Stub = createRoutesStub([
   {
-    Component: AppLayout,
+    Component: EmptyMockCartContextProvider,
     children: [
       {
-        path: "/products/:category?",
-        Component: ProductsPage,
+        Component: AppLayout,
+        children: [
+          {
+            path: "/products/:category?",
+            Component: ProductsPage,
+          },
+        ],
       },
     ],
   },
@@ -23,11 +28,7 @@ const Stub = createRoutesStub([
 
 describe("products page tests, loading products", [
   it("shows loading cards before the request finishes", async () => {
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
     expect(screen.getAllByText("Loading").length).toBeGreaterThan(0);
   }),
 
@@ -38,20 +39,12 @@ describe("products page tests, loading products", [
       }),
     );
 
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
     expect(await screen.findByText(/An error occured./)).toBeInTheDocument();
   }),
 
   it("/products/ shows every product", async () => {
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
 
     await screen.findAllByText("Blue Jacket");
     const products = await screen.findAllByRole("article");
@@ -60,11 +53,7 @@ describe("products page tests, loading products", [
   }),
 
   it("/products/men's clothing shows only men's clothing", async () => {
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products/men's clothing"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products/men's clothing"]} />);
 
     await screen.findAllByText("Blue Jacket");
     const products = await screen.findAllByRole("article");
@@ -73,11 +62,7 @@ describe("products page tests, loading products", [
   }),
 
   it("/products/women's clothing shows only men's clothing", async () => {
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products/women's clothing"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products/women's clothing"]} />);
 
     await screen.findAllByText("Pink Dress");
     const products = await screen.findAllByRole("article");
@@ -89,11 +74,7 @@ describe("products page tests, loading products", [
 describe("products page tests, product interactions", [
   it("cliking add to cart button, adds the 1 product to cart", async () => {
     const user = userEvent.setup();
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
 
     await screen.findByText("Blue Jacket");
 
@@ -104,11 +85,7 @@ describe("products page tests, product interactions", [
 
   it("clicking add to cart button on same product, adds the 2 product to cart", async () => {
     const user = userEvent.setup();
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
 
     await screen.findByText("Blue Jacket");
 
@@ -120,11 +97,7 @@ describe("products page tests, product interactions", [
 
   it("clicking add to cart button on 2 product, adds the 2 product to cart", async () => {
     const user = userEvent.setup();
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
 
     await screen.findByText("Blue Jacket");
 
@@ -136,11 +109,7 @@ describe("products page tests, product interactions", [
 
   it("clicking add to cart button on a product after changing numbers to buy to 2, adds the 2 product to cart", async () => {
     const user = userEvent.setup();
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/products"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/products"]} />);
 
     await screen.findByText("Blue Jacket");
 

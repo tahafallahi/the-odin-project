@@ -27,22 +27,26 @@
   height: 160px;
   position: sticky;
   top: 0px;
-  background-color: var(--color-secondry);
+  background-color: var(--color-primary);
   transform-origin: top;
   will-change: transform;
   animation: shrink forwards;
   animation-timeline: scroll();
   animation-range: entry 2% 30%;
+  box-shadow: var(--shadow-header);
+  isolation: isolate;
+  z-index: 1;
 }
 
 .header {
-  color: var(--color-primary);
+  color: var(--color-secondry);
   width: 100%;
   position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
   top: 0;
+  z-index: 2;
 }
 
 .logo {
@@ -106,7 +110,7 @@
 
 .counter > span {
   position: absolute;
-  color: oklch(68.586% 0.20309 24.187);
+  color: var(--color-accent);
   top: -11px;
   right: -20px;
   font-size: 2.6rem;

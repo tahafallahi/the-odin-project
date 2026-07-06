@@ -6,17 +6,17 @@
 
   to {
     letter-spacing: 0ch;
-    color: var(--color-expanding-text);
+    color: var(--color-secondry);
   }
 }
 
 .expanding-text {
-  color: var(--color-expanding-text);
+  color: var(--color-secondry);
   letter-spacing: -1ch;
   color: transparent;
   animation: text-expantion 1s 0.1s forwards;
 }
 
 .expanding-text::first-letter {
-  color: var(--color-expanding-text);
+  color: var(--color-secondry);
 }

@@ -11,11 +11,16 @@ import userEvent from "@testing-library/user-event";
 
 const Stub = createRoutesStub([
   {
-    Component: AppLayout,
+    Component: MockCartContextProvider,
     children: [
       {
-        path: "/cart",
-        Component: CartPage,
+        Component: AppLayout,
+        children: [
+          {
+            path: "/cart",
+            Component: CartPage,
+          },
+        ],
       },
     ],
   },
@@ -23,11 +28,7 @@ const Stub = createRoutesStub([
 
 describe("cart page tests, loading products", [
   it("shows loading cards before the request finishes", async () => {
-    render(
-      <MockCartContextProvider>
-        <Stub initialEntries={["/cart"]} />
-      </MockCartContextProvider>,
-    );
+    render(<Stub initialEntries={["/cart"]} />);
     expect(screen.getAllByText("Loading").length).toBeGreaterThan(0);
   }),
 
@@ -38,20 +39,12 @@ describe("cart page tests, loading products", [
       }),
     );
 
-    render(
-      <MockCartContextProvider>
-        <Stub initialEntries={["/cart"]} />
-      </MockCartContextProvider>,
-    );
+    render(<Stub initialEntries={["/cart"]} />);
     expect(await screen.findByText(/An error occured./)).toBeInTheDocument();
   }),
 
   it("shows the products in the cart", async () => {
-    render(
-      <MockCartContextProvider>
-        <Stub initialEntries={["/cart"]} />
-      </MockCartContextProvider>,
-    );
+    render(<Stub initialEntries={["/cart"]} />);
     await screen.findByRole("heading", { name: "Pink Dress" });
     expect(screen.getAllByRole("article").length).toBe(2);
   }),
@@ -60,11 +53,7 @@ describe("cart page tests, loading products", [
 describe("cart page tests, product intractions", [
   it("decreasing the spinbutton lowers product cart counter", async () => {
     const user = userEvent.setup();
-    render(
-      <MockCartContextProvider>
-        <Stub initialEntries={["/cart"]} />
-      </MockCartContextProvider>,
-    );
+    render(<Stub initialEntries={["/cart"]} />);
 
     await screen.findByRole("heading", { name: "Pink Dress" });
 
@@ -75,11 +64,7 @@ describe("cart page tests, product intractions", [
 
   it("increasing the spinbutton increases product cart counter", async () => {
     const user = userEvent.setup();
-    render(
-      <MockCartContextProvider>
-        <Stub initialEntries={["/cart"]} />
-      </MockCartContextProvider>,
-    );
+    render(<Stub initialEntries={["/cart"]} />);
 
     await screen.findByRole("heading", { name: "Pink Dress" });
 
@@ -90,11 +75,7 @@ describe("cart page tests, product intractions", [
 
   it("desceasing every the spinbutton to zero, decrease product cart counter to zero", async () => {
     const user = userEvent.setup();
-    render(
-      <MockCartContextProvider>
-        <Stub initialEntries={["/cart"]} />
-      </MockCartContextProvider>,
-    );
+    render(<Stub initialEntries={["/cart"]} />);
 
     await screen.findByRole("heading", { name: "Pink Dress" });
 

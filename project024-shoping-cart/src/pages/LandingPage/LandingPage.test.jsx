@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { CartContextProvidor } from "../../providers.jsx";
+import { MockCartContextProvider } from "../../../tests/mockProviders.jsx";
 import LandingPage from "./LandingPage.jsx";
 import ProductsPage from "/src/pages/ProductsPage/ProductsPage.jsx";
 import AppLayout from "../AppLayout/AppLayout.jsx";
@@ -14,11 +14,16 @@ const Stub = createRoutesStub([
     Component: LandingPage,
   },
   {
-    element: AppLayout,
+    Component: MockCartContextProvider,
     children: [
       {
-        path: "/products/:category?",
-        Component: ProductsPage,
+        element: AppLayout,
+        children: [
+          {
+            path: "/products/:category?",
+            Component: ProductsPage,
+          },
+        ],
       },
     ],
   },
@@ -28,11 +33,7 @@ describe("home page tests", [
   it("clicking the buy men's clothing redirect to men's products page", async () => {
     const user = userEvent.setup();
 
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/"]} />);
 
     await user.click(screen.getByRole("link", { name: "Buy Men's Clothing" }));
 
@@ -43,11 +44,7 @@ describe("home page tests", [
   it("clicking the buy women's clothing redirect to women's products page", async () => {
     const user = userEvent.setup();
 
-    render(
-      <CartContextProvidor>
-        <Stub initialEntries={["/"]} />
-      </CartContextProvidor>,
-    );
+    render(<Stub initialEntries={["/"]} />);
 
     await user.click(
       screen.getByRole("link", { name: "Buy Women's Clothing" }),

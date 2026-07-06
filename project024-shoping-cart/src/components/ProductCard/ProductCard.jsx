@@ -39,10 +39,11 @@ export default function ProductCard({ product }) {
         <p>{product.description}</p>
       </div>
       <div className={styles.payment}>
-        <p>{product.price} $</p>
+        <p>{Number.parseFloat(product.price * numberOfOrder).toFixed(2)} $</p>
         <input
           type="number"
           value={numberOfOrder}
+          onFocus={(e) => e.target.select()}
           onChange={handleNumberChange}
           min="1"
           max="100"

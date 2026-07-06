@@ -1,13 +1,13 @@
-@media (width <= 1100px) {
+@media (width <= 1700px) {
   .responsive-grid {
     grid-template-columns: repeat(auto-fit, 400px);
     padding: 0px 20px;
   }
 }
 
-@media (width > 1100px) {
+@media (width > 1700px) {
   .responsive-grid {
-    grid-template-columns: repeat(3, 400px);
+    grid-template-columns: repeat(4, 400px);
     padding: 0px 20px;
   }
 }
@@ -15,5 +15,5 @@
 .responsive-grid {
   display: grid;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
 }

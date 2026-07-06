@@ -5,8 +5,8 @@
   gap: 20px;
   align-items: center;
   background-color: var(--color-light-primary);
-  border: 1px solid var(--color-secondry);
   padding: 20px 12px 12px 12px;
+  box-shadow: 0px 0px 5px grey;
 }
 
 .card > img {
@@ -49,15 +49,17 @@
 .payment > input {
   width: 50px;
   margin-right: 10px;
-  border-radius: 10px;
   text-align: center;
   font-size: 1.3rem;
   border: 1px solid var(--color-secondry);
+  box-shadow: 5px 5px 0px black;
+  /* box-shadow: 5px 5px 0px black; */
 }
 
 .payment > input:focus {
   outline: none;
-  border: 3px solid var(--color-secondry);
+  box-shadow: none;
+  transform: translate(2px, 2px);
 }
 
 .payment > button {
