@@ -1,0 +1,41 @@
+body {
+  background-color: rgb(235, 235, 235);
+}
+
+header {
+  display: flex;
+  width: 500px;
+  justify-self: center;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title {
+  color: rgb(5, 160, 237);
+  text-align: center;
+  margin: 50px 0px;
+}
+
+.messages {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.messages > div {
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px 30px;
+  /* border: 2px solid rgb(157, 157, 157); */
+  box-shadow: 0px 0px 7px rgb(104, 168, 200);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px 30px;
+  gap: 16px;
+  box-shadow: 0px 0px 7px rgb(104, 168, 200);
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header") %>
+  <body>
+    <ul class="items-list">
+      <li>
+        <p><%= item.id %></p>
+        <h3><%= item.name %></h3>
+        <p><%= item.category_name %></p>
+        <p><%= item.stock %></p>
+        <p><%= item.price %> $</p>
+        <a href="/item/update?id=<%= item.id %>">Edit</a>
+        <a href="/item/delete?id=<%= item.id %>">Remove</a>
+        <a href="/item">Go Back To Item List</a>
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header") %>
+  <body>
+    <h2>Add New Item</h2>
+    <form method="POST" action="">
+      <div>
+        <label for="name">Item Name</label>
+        <input type="text" id="name" name="name" required/>
+      </div>
+        <label for="category">Item Category</label>
+        <input type="" id="category" name="category" list="category-options"/>
+        <datalist id="category-options">
+            <% categoires.map(category => { %>
+                <option value="<%= category.name %>"></option>
+            <% }) %> 
+        </datalist>
+      </div>
+      <div>
+        <label for="stock">In Stock</label>
+        <input onfocus="this.select();" type="number" id="stock" name="stock" value="0" sele/>
+      </div>
+        <label for="price">Price</label>
+        <input onfocus="this.select();" type="number" id="price" name="price" value="0"/>
+      </div>
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>

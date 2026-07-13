@@ -1,0 +1,17 @@
+<html>
+    <%- include("header", {}) %>
+    <body>
+        <header>
+            <h1 class="title">The Message Board</h1>
+            <a href="new">Add Message</a>
+        </header>
+        <div class="messages">
+            <% messages.map((message) => { %>
+                <div>
+                    <h2>User: <%= message.user %></h2>
+                    <p><%= message.text %></p>
+                </div>
+            <% })%>
+        </div>
+    </body>
+</html>
