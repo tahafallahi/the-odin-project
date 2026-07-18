@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header", {title: "Log In"}) %>
+<body>
+  <div class="messages">
+    <% messages.map(message => { %>
+      <div>
+        <h2><%= message.title %></h2>
+        <% if(user && user.is_member) { %>
+          <h3><%= message.author %></h3>
+          <h3><%= message.created_at %></h3>
+        <% } %>
+        <p><%= message.text %></p>
+        <% if(user && user.is_admin) { %>
+          <button>Delete</button>
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+  <% if(user) { %>
+    <a href="/create">Write New Message</a>
+  <% } %>
+</body>
+</html>

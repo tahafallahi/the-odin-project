@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header", {title: "Log In"}) %>
+<body>
+  <% if(!user) { %>
+    <h1>You aren't logged in, please log in first.</h1>
+  <% }else if (user.is_member) { %>
+    <h1>You are already part of the SECRET CLUB, be happy!!!</h1>
+  <% }else { %>
+    <h1>JOIN THE SECRET CLUB</h1>
+    <p>User "<%= user.fullname %>" to join the SECRET CLUB enter the SECRET CODE below.</p>
+    <form method="POST" action="">
+      <input type="text" name="secret" id="secret">
+      <button type="submit">ENTER THE SECRET CLUB!</button>
+    </form>
+  <% } %>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("header", {title: "Log In"}) %>
+<body>
+  <form method="POST" action="">
+    <label for="email" >Email</label>
+    <input type="text" name="email" id="email" required>
+    <label for="fullname">Full Name</label>
+    <input type="text" name="fullname" id="fullname" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <label for="password2">Confirm Password</label>
+    <input type="password" name="password2" id="password2" required>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
