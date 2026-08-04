@@ -1,0 +1,400 @@
+:root {
+  --color-bg: oklch(20% 0 0);
+  --color-bg-l1: oklch(30% 0 0);
+  --color-bg-l2: oklch(35% 0 0);
+  --color-text: oklch(100% 0 0);
+  --color-text-grey: oklch(70% 0.00008 271.152);
+  --color-accent: oklch(95.366% 0.13058 178.614);
+  --color-error: oklch(81.88% 0.10184 19.441);
+  --color-ok: oklch(80.953% 0.11284 137.035);
+  --page-margin: 12%;
+  background-color: var(--color-bg);
+  font-family: sans-serif;
+  color: var(--color-text);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+header > h1 > a {
+  color: var(--color-accent);
+}
+
+header {
+  display: flex;
+  width: 100%;
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  justify-content: space-between;
+  padding: 20px var(--page-margin);
+  justify-self: center;
+}
+
+header > .nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav a:hover {
+  color: var(--color-accent);
+}
+
+header .selected {
+  color: var(--color-accent);
+}
+
+main {
+  width: 100%;
+  padding: 50px var(--page-margin);
+}
+
+.centered-layout {
+  padding: 20px 5px;
+  justify-self: center;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.error-message {
+  color: var(--color-error);
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input {
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  border: none;
+  height: 32px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--color-text);
+  caret-color: var(--color-text);
+}
+
+input:focus {
+  outline-color: var(--color-accent);
+  outline-style: solid;
+}
+
+button,
+.button {
+  background-color: var(--color-bg-l1);
+  color: var(--color-accent);
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 16px 0px;
+  width: 100%;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+button:hover,
+.button:hover {
+  color: var(--color-bg-l1);
+  background-color: var(--color-accent);
+}
+
+.folders-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folders-header .inputs {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+main .underlined-header {
+  position: relative;
+}
+
+main .underlined-header * {
+  font-weight: 400;
+}
+
+main .underlined-header::before {
+  content: " ";
+  background-color: var(--color-accent);
+  position: absolute;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+}
+
+.underlined-header a {
+  line-height: 1;
+}
+
+.underlined-header button {
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  background: inherit;
+  padding: 0;
+  border: none;
+  width: max-content;
+  border-radius: 0;
+  anchor-name: --example-anchor;
+}
+
+.underlined-header button:hover {
+  color: var(--color-accent);
+  background-color: inherit;
+}
+
+#upload-popover {
+  position: absolute;
+  position-anchor: --example-anchor;
+  position-area: bottom left;
+  top: 30px;
+  right: -80px;
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  border: none;
+  border-right: 1px solid var(--color-accent);
+  padding: 20px;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.2s ease,
+    display 0.2s allow-discrete,
+    overlay 0.2s allow-discrete;
+}
+
+#upload-popover:not(:popover-open) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+@starting-style {
+  #upload-popover:popover-open {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+#upload-popover h3 {
+  text-align: center;
+}
+
+#upload-popover button,
+input {
+  background-color: var(--color-bg-l2);
+}
+
+#upload-popover button:hover {
+  background-color: var(--color-accent);
+  color: black;
+}
+
+#create-folder-popover {
+  position: absolute;
+  position-anchor: --example-anchor;
+  position-area: bottom left;
+  top: 30px;
+  right: -80px;
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  border: none;
+  border-right: 1px solid var(--color-accent);
+  padding: 20px;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.2s ease,
+    display 0.2s allow-discrete,
+    overlay 0.2s allow-discrete;
+}
+
+#create-folder-popover:not(:popover-open) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+@starting-style {
+  #create-folder-popover:popover-open {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+#create-folder-popover h3 {
+  text-align: center;
+}
+
+#create-folder-popover button,
+input {
+  background-color: var(--color-bg-l2);
+}
+
+#create-folder-popover button:hover {
+  background-color: var(--color-accent);
+  color: black;
+}
+
+.folder-content {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  justify-content: space-between;
+}
+
+.row > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.row > a > p {
+  transition: transform 0.15s;
+}
+
+.row > a:hover > p {
+  color: var(--color-accent);
+  transform: translateX(8px);
+}
+
+.row > .details {
+  color: var(--color-text-grey);
+  display: flex;
+  gap: 24px;
+}
+
+.details form {
+  width: max-content;
+}
+
+.details button {
+  flex: 0;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  background: inherit;
+  padding: 0;
+  border: none;
+  width: max-content;
+  border-radius: 0;
+}
+
+.details button.trash svg {
+  color: var(--color-error);
+}
+
+.details button.download svg {
+  color: var(--color-ok);
+}
+
+.details button.edit svg {
+  color: var(--color-ok);
+}
+
+.update-folder-popover {
+  position: absolute;
+  position-anchor: --example-anchor;
+  position-area: bottom left;
+  top: 30px;
+  right: -80px;
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  border: none;
+  border-right: 1px solid var(--color-accent);
+  padding: 20px;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.2s ease,
+    display 0.2s allow-discrete,
+    overlay 0.2s allow-discrete;
+}
+
+.update-folder-popover:not(:popover-open) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+@starting-style {
+  .update-folder-popover:popover-open {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+.update-folder-popover h3 {
+  text-align: center;
+}
+
+.update-folder-popover button,
+input {
+  background-color: var(--color-bg-l2);
+}
+
+.update-folder-popover button:hover {
+  background-color: var(--color-accent);
+  color: black;
+}
+
+.details button:hover svg {
+  color: var(--color-accent);
+  background-color: inherit;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.file-display {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.file-display img {
+  max-width: 100%;
+}

@@ -1,0 +1,21 @@
+<div class="centered-layout">
+  <form  method="POST" action="">
+    <h3>Fill in the data to register!</h3>
+    <% if (locals.errorMessage !== undefined) { %>
+    <p class="error-message"><%- errorMessage %></p>
+    <% } %>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+    <div>
+      <label for="password2">Confirm Password</label>
+      <input type="password" name="password2" id="password2" required />
+    </div>
+    <button type="submit">Sign In</button>
+  </form>
+</div>

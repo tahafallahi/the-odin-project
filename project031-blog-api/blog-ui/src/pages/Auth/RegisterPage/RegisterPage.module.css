@@ -1,0 +1,8 @@
+.description {
+  position: absolute;
+  bottom: -8px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.15rem;
+  font-style: italic;
+}

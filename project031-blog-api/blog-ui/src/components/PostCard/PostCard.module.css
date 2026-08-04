@@ -1,0 +1,66 @@
+.post {
+  padding: 12px 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  text-wrap: pretty;
+}
+
+.post .information {
+  margin-top: -8px;
+  display: flex;
+  gap: 16px;
+  padding-bottom: 8px;
+  color: rgb(126, 126, 126);
+  font-size: 0.9rem;
+}
+
+.text {
+  position: relative;
+  color: var(--color-text-l1);
+  height: 8ch;
+  overflow: clip;
+  margin-bottom: 12px;
+}
+
+.text::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16ch;
+  height: 2.8ch;
+  background: linear-gradient(
+    to right,
+    oklch(27.085% 0.0108 319.334 / 0.277),
+    var(--color-bg) 75%
+  );
+}
+
+.read-more {
+  display: flex;
+  color: var(--color-text-l1);
+  align-items: center;
+}
+
+.read-more svg {
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+.options-button {
+}
+
+.options-popover {
+  position: absolute;
+  position-area: left;
+  background-color: var(--color-bg-l1);
+}

@@ -1,0 +1,100 @@
+<div id="upload-popover" popover>
+  <form method="POST" action="/file/upload" enctype="multipart/form-data">
+    <h3>Upload a new file.</h3>
+    <div>
+      <label for="file">File</label>
+      <input type="file" name="file" id="file" required />
+      <input type="hidden" name="dir" value=<%= path %>>
+    </div>
+    <button type="submit">Upload</button>
+  </form>
+</div>
+
+<div id="create-folder-popover" popover>
+  <form method="POST" action="/folder/create">
+    <h3>Create a new folder.</h3>
+    <div>
+      <label for="name">Folder Name</label>
+      <input type="text" name="name" id="name" required />
+      <input type="hidden" name="dir" value=<%= path %>>
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div>
+
+
+<div class="underlined-header folders-header">
+  <h3><%= decodeURI(path) %></h3>
+  <div class="inputs">
+    <button popovertarget="create-folder-popover" >New Folder</button>
+    <button popovertarget="upload-popover" >Upload File</button>
+  </div>
+</div>
+<div class="folder-content">
+  <% if (folderContent) { %>
+    <% folderContent.forEach((i) =>{ %>
+      <div class="row">
+        <a href=<%= path + "/" + encodeURI(i.name) %>>
+          <% if (i.type == "folder") { %>
+            <i class="icon" data-lucide="folder-open" %>></i>
+            <p><%= i.name %></p>
+          <% } else if (i.type == "file") { %>
+            <% if (i.mimetype.startsWith("image")) { %>
+              <i class="icon" data-lucide="image" %>></i>
+            <% } else if (i.mimetype.startsWith("audio")) { %> 
+              <i class="icon" data-lucide="disc" %>></i>
+            <% } else { %> 
+              <i class="icon" data-lucide="file-text" %>></i>
+          <% } %> 
+          <p>
+            <%= i.name.split(".").slice(0, -1).join(".") %>
+          </p>
+          <% } %>
+        </a>
+        <% if (i.type == "file") { %>
+          <div class="details">
+            <p><%= i.mimetype.split("/")[0] %></p>
+            <p><%= i.size/1000 + " kb" %></p>
+            <p class="date-time"><%= i.createAt.toLocaleString("en-US", {year: "numeric", month: "numeric", day: "numeric",hour: "2-digit", minute: "2-digit",}); %>
+            </p>
+            <form method="POST" action="/file/delete">
+              <input type="hidden" name="fileId" value=<%= i.id %>>
+              <input type="hidden" name="dir" value=<%= path %>>
+              <button type="submit" class="trash">
+                <i class="icon" data-lucide="trash" %>></i>
+              </button>
+            </form>
+
+          </div>
+          <% } else if (i.type == "folder") { %>
+            <div class="details">
+              <button class="edit" popovertarget=<%= "update-folder-popover" + i.id %>>
+                  <i class="icon" data-lucide="edit" %>></i>
+              </button>
+              <div class="update-folder-popover" id=<%= "update-folder-popover" + i.id %> popover>
+                <form method="POST" action="/folder/update">
+                  <div>
+                    <label for="name">Change File Name:</label>
+                    <input type="text" name="name" id="name">
+                    <input type="hidden" name="folderId" value=<%= i.id %>>
+                    <input type="hidden" name="dir" value=<%= path %>>
+                  </div>
+                  <button type="submit">Apply</button>
+                </form>
+              </div>
+              <form method="POST" action="/folder/delete">
+                <input type="hidden" name="folderId" value=<%= i.id %>>
+                <input type="hidden" name="dir" value=<%= path %>>
+                <button type="submit" class="trash" >
+                  <i class="icon" data-lucide="trash" %>></i>
+                </button>
+              </form>
+            </div>
+          <% } %>
+        </div>
+      <% }) %>
+  <% } else { %>
+    Empty.
+  <% } %>
+</div>
+

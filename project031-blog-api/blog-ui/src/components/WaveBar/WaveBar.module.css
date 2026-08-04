@@ -1,0 +1,30 @@
+@keyframes waving {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
+}
+
+.wave-container {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.wave-container svg {
+  display: block;
+  height: 100%;
+  width: 150%;
+  flex-shrink: 0;
+  will-change: tranfrom;
+  fill: var(--color-primary);
+  animation: waving 11s infinite linear;
+}
+
+.wave-container svg:last-child {
+  margin-left: -1px;
+}

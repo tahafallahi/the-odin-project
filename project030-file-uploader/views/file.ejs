@@ -1,0 +1,18 @@
+<div class="underlined-header folders-header">
+  <h3> <%= "/" + file.storageKey.split("/").slice(1).join("/") %></h3>
+  <div class="inputs">
+    <a href=<%- downloadSignedUrl %>>Download</a>
+  </div>
+</div>
+<div class="file-display">
+  <% if (error1 || error2) { %>
+    <h3 class="error-message">Something went wrong, please try again.</h3>
+    <% } else { %>
+      <% if(file.mimetype.startsWith("image")) { %>
+        <img src=<%- fileSignedUrl %>
+    <% } else if (file.mimetype.startsWith("audio")) {%>
+        <audio controls src=<%- fileSignedUrl %> ></audio>
+    <% } %>
+  <% } %>
+</div>
+    

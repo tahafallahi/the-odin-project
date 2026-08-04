@@ -1,0 +1,91 @@
+:root {
+  --color-accent: oklch(94.085% 0.16222 121.272);
+  --color-accent-l1: oklch(83.456% 0.16364 122.124);
+  --color-primary: oklch(37.564% 0.18897 291.983);
+  --color-bg: oklch(27.085% 0.0108 319.334);
+  --color-bg-l1: oklch(35.926% 0.03913 303.154);
+  --color-text: oklch(90% 0.00011 271.152);
+  --color-text-l1: oklch(79.837% 0.00011 271.152);
+  --color-error: oklch(77.722% 0.14641 21.15);
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+* {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+.error-message {
+  /* text-align: center; */
+  color: var(--color-error);
+  font-weight: 600;
+}
+
+main {
+  width: 1000px;
+  margin: auto;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+textarea {
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  padding: 8px 12px;
+  border: none;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+input:focus {
+  outline-color: var(--color-accent);
+  outline-style: solid;
+}
+
+input {
+  background-color: var(--color-bg-l1);
+  color: var(--color-text);
+  padding-left: 10px;
+  border: none;
+}
+
+form button {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 600;
+  height: 60px;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: var(--color-accent-l1);
+}
+
+footer {
+  height: 200px;
+}

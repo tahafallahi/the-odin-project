@@ -1,0 +1,17 @@
+<div class="centered-layout">
+  <form method="POST" action="">
+    <h3>Log in to your account.</h3>
+    <% if (locals.errorMessage !== undefined) { %>
+    <p class="error-message"><%- errorMessage %></p>
+    <% } %>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+    <button type="submit">Log In</button>
+  </form>
+</div>

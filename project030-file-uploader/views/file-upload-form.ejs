@@ -1,0 +1,12 @@
+<div class="centered-layout">
+  <form method="POST" action="" enctype="multipart/form-data">
+    <h3>Upload a new file.</h3>
+    <% if (locals.errorMessage !== undefined) { %>
+    <p class="error-message"><%- errorMessage %></p>
+    <% } %>
+    <div>
+      <input type="file" name="file" id="file" required />
+    </div>
+    <button type="submit">Upload</button>
+  </form>
+</div>

@@ -1,0 +1,58 @@
+.title {
+  font-size: 3rem;
+  max-width: 50ch;
+  text-align: center;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  text-align: start;
+  width: 100%;
+  font-weight: bold;
+}
+
+.header::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  bottom: 0px;
+  background-color: var(--color-accent);
+}
+
+.white-bar {
+  margin-bottom: 16px;
+}
+
+.white-bar::before {
+  height: 1px;
+
+  background-color: white;
+}
+
+.text {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comments {
+  padding-left: 12px;
+  width: 100%;
+}
+
+.new-comment {
+  width: 100%;
+}
+
+.new-comment form {
+  width: 100%;
+}

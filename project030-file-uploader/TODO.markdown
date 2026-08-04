@@ -1,0 +1,3 @@
+- Add time zone to create at of files.
+- validate folder and file. e.g. no doets
+- Change the upload method of supabase to a better optoin to be able to upload bigger files.

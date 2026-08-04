@@ -1,0 +1,11 @@
+.link-button {
+  height: 100%;
+  width: fit-content;
+  color: var(--color-text);
+  background-color: transparent;
+  border: none;
+}
+
+.link-button:hover {
+  color: var(--color-accent);
+}
