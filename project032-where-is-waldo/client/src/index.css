@@ -1,0 +1,119 @@
+@keyframes expand {
+  from {
+  }
+  to {
+    transform: translateX(-1.5vw) scaleY(10);
+    transform-origin: center;
+    color: blue;
+  }
+}
+
+:root {
+  background-color: oklch(25% 0 0);
+}
+
+* {
+  margin: 0;
+}
+
+.background {
+  width: 100%;
+}
+
+.hud {
+  /* height: 6vw; */
+  width: 32vw;
+  left: 34vw;
+  position: fixed;
+  background-color: rgba(0, 128, 0, 0.546);
+  color: white;
+  top: 1vw;
+  padding: 0.5vw 1vw;
+}
+
+.hud p {
+  text-align: center;
+  font-size: 1.5vw;
+}
+
+.pictures {
+  padding-top: 0.5vw;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 1vw;
+}
+
+.pictures .img-container {
+  width: 5vw;
+  height: 5vw;
+}
+
+.pictures img {
+  width: 100%;
+  height: 100%;
+  /* height: 100%; */
+}
+
+.pictures p {
+  padding-top: 0.5vw;
+  font-size: 1.2vw;
+}
+
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1vh;
+  background-color: rgb(59, 221, 77);
+  width: 10vw;
+  border: 0.2vw solid green;
+}
+
+.menu button {
+  color: white;
+  background-color: black;
+  height: 2.5vw;
+  border: none;
+  font-size: 1.3vw;
+}
+
+.menu button:hover {
+  background-color: rgb(43, 43, 43);
+}
+
+.selection {
+  position: absolute;
+  background-color: rgba(0, 128, 0, 0.768);
+  transform: translateX(-1.5vw);
+  width: 3vw;
+  height: 0.3vw;
+  animation: expand 0.3s forwards;
+}
+
+.tick {
+  position: absolute;
+  background-color: transparent;
+  border: 0.5vw, solid, green;
+  transform: translateX(-2.2vw) translateY(-2vw);
+  width: 4vw;
+  height: 4vw;
+}
+
+.message {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.message p {
+  background-color: rgba(0, 128, 0, 0.768);
+  color: white;
+  padding: 5vw 0;
+  text-align: center;
+  width: 100%;
+}

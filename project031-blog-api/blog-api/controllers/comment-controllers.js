@@ -15,7 +15,7 @@ export const createComment = [
       const { text, postId } = matchedData(req);
       const comment = await prisma.comment.create({
         data: { text, postId, userId: req.user.id },
-        include: { user: { select: { displayName: true } } },
+        include: { user: { select: { displayName: true, id: true } } },
       });
 
       return res.status(201).json(comment);
@@ -29,6 +29,7 @@ export const getComment = [
   async function (req, res) {
     const comment = await prisma.comment.findUnique({
       where: { id: Number(req.params.id) },
+      include: { user: { select: { displayName: true, id: true } } },
     });
 
     if (!comment) {
@@ -45,7 +46,7 @@ export const getAllComments = [
   async function (req, res) {
     const comments = await prisma.comment.findMany({
       where: { postId: Number(req.query.postId) },
-      include: { user: { select: { displayName: true } } },
+      include: { user: { select: { displayName: true, id: true } } },
     });
 
     return res.status(200).json(comments);
@@ -96,8 +97,8 @@ export const deleteComment = [
         .json({ error: "the requested comment doesn't exist." });
     }
 
-    if (comment.userId != req.user.id && req.user.role != "ADMIN") {
-      return res.status(403).json({ error: "you can't update this comment." });
+    if (comment.userId !== req.user.id && req.user.role !== "ADMIN") {
+      return res.status(403).json({ error: "you can't delete this comment." });
     }
 
     await prisma.comment.delete({ where: { id: comment.id } });

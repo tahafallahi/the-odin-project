@@ -44,6 +44,10 @@ export default function PostPage() {
     setCommentInputIsShown(false);
   }
 
+  function onRemove(comment) {
+    setComments(comments.filter((c) => c.id !== comment.id));
+  }
+
   return (
     <>
       <Header>
@@ -72,7 +76,7 @@ export default function PostPage() {
         </div>
         <div className={styles.comments}>
           {comments.map((c) => (
-            <Comment comment={c} />
+            <Comment key={c.id} comment={c} onRemove={onRemove} />
           ))}
           {commentInputIsShown ? (
             <div className={styles.newComment}>
@@ -87,6 +91,7 @@ export default function PostPage() {
           ) : null}
         </div>
       </main>
+      <footer></footer>
     </>
   );
 }

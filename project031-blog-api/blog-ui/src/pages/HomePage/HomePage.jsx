@@ -39,8 +39,7 @@ export default function HomePage() {
             ? posts.map((p) => (
                 <PostCard key={p.id} initialPost={p} onRemove={handleRemove} />
               ))
-            : "There are no Posts."}{" "}
-          // add a loading state
+            : "There are no Posts."}
         </div>
       </main>
       <footer></footer>
